@@ -6,8 +6,10 @@
   },
   "scripts": {
     "postinstall": "npx playwright install",
-    "e2e:prod": "TEST_ENV=prod playwright test --project='de'",
+    "e2e:prod": "TEST_ENV=prod playwright test --project='e2e'",
     "e2e:prod:de": "LOCALE=de npm run e2e:prod",
+    "e2e:prod:at": "LOCALE=at npm run e2e:prod",
+    "e2e:prod:ch": "LOCALE=ch npm run e2e:prod",
     "lint": "eslint ./*.ts",
     "lint:fix": "npm run lint -- --fix",
     "prettier": "prettier \"**/**/*.{js,jsx,ts,tsx}\" --write",

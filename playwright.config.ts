@@ -15,7 +15,7 @@ export default defineConfig({
 
   projects: [
     {
-      name: 'de',
+      name: 'e2e',
       use: { ...devices['Desktop Chrome'] },
     },
   ],
