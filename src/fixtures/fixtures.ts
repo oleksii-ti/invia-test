@@ -1,10 +1,12 @@
 import { test as base } from '@playwright/test'
 import { HomePage } from '../pages/home-page'
 import { LoginPopup } from '../pages/login-popup'
+import { SearchResultPage } from '../pages/search-result-page'
 
 type PageFixturtes = {
   homePage: HomePage
   loginPopup: LoginPopup
+  searchResultPage: SearchResultPage
 }
 
 export const test = base.extend<PageFixturtes>({
@@ -28,6 +30,9 @@ export const test = base.extend<PageFixturtes>({
   },
   loginPopup: async ({ page }, use) => {
     await use(new LoginPopup(page))
+  },
+  searchResultPage: async ({ page }, use) => {
+    await use(new SearchResultPage(page))
   },
 })
 
