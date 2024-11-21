@@ -18,7 +18,7 @@ export class HomePage {
   }
 
   datesField(): Locator {
-    return this.page.locator('[data-testid="travel-period-field"]')
+    return this.page.locator('[data-testid="shared-searchForm-travel-period"]')
   }
   destinationFields(): Locator {
     return this.page.locator('[data-testid="destination-field"]')
@@ -28,6 +28,23 @@ export class HomePage {
   }
   searchButton(): Locator {
     return this.page.locator('[data-testid="submit"]')
+  }
+
+  autoconmpleteItem(number: number): Locator {
+    return this.page.locator('ul[id*=-menu] > li[id*=item-] > div').nth(number)
+  }
+
+  // Calendar
+
+  /**
+   * @param startDate start date in the format '2025-07-12'
+   * @param endDatestart end date in the format '2025-07-22'
+   */
+  async setDate(startDate: string, endDate: string) {
+    await this.page.click(`[data-date="${startDate}"]`)
+    await this.page.click(`[data-date="${endDate}"]`)
+    await this.page.click('button [data-testid="IconArrowForward"]')
+    await this.page.click('[data-testid="travel-period-widget"] button')
   }
 
   // Sections
@@ -42,4 +59,5 @@ export class HomePage {
   articlesSection(): Locator {
     return this.page.locator('[data-cy="search-seomulti-main-magazineArticles"]')
   }
+
 }
