@@ -14,7 +14,7 @@ export const test = base.extend<PageFixturtes>({
         name: 'CookieConsent',
         value:
           "{stamp:'iL9j4mDoKjmdTEMc6g2QNUq9m+hHNOH8YNUmGK7dARZB46f21jlWeA==',necessary:true,preferences:false,statistics:false,marketing:false,method:'explicit',ver:7,utc:1731969341591,region:'de'}",
-        domain: 'www.ab-in-den-urlaub.de',
+        domain: `www.ab-in-den-urlaub.${process.env.LOCALE}`,
         path: '/',
         httpOnly: false,
         secure: true,
