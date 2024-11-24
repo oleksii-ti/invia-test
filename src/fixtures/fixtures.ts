@@ -31,8 +31,8 @@ export const test = base.extend<PageFixturtes>({
   loginPopup: async ({ page }, use) => {
     await use(new LoginPopup(page))
   },
-  searchResultPage: async ({ page }, use) => {
-    await use(new SearchResultPage(page))
+  searchResultPage: async ({ page, context }, use) => {
+    await use(new SearchResultPage(page, context))
   },
 })
 

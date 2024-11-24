@@ -1,5 +1,5 @@
 import { expect, test } from '../src/fixtures/fixtures'
-
+import { Assertions } from '../src/actions/assertions'
 
 // Basic functionalities check on the Homepage:
 // • Navigate to the homepage for each site.
@@ -13,22 +13,20 @@ test.describe('Home Page', () => {
   })
 
   test('should contain tours search form', async ({ homePage }) => {
-    expect(homePage.departureAirport()).toBeVisible
-    expect(homePage.datesField()).toBeVisible
-    expect(homePage.destinationFields()).toBeVisible
-    expect(homePage.travellersField()).toBeVisible
-    expect(homePage.searchButton()).toBeVisible
+    expect(homePage.departureAirport()).toBeVisible()
+    expect(homePage.datesField()).toBeVisible()
+    expect(homePage.destinationFields()).toBeVisible()
+    expect(homePage.travellersField()).toBeVisible()
+    expect(homePage.searchButton()).toBeVisible()
   })
 
   test('should contain login link in My Account menu', async ({ homePage }) => {
-    expect(homePage.myAccountIcon()).toBeVisible
+    expect(homePage.myAccountIcon()).toBeVisible()
     await homePage.myAccountIcon().hover()
-    expect(homePage.datesField()).toBeVisible
+    expect(homePage.datesField()).toBeVisible()
   })
 
   test('should contain Top destinations, Current offers, Articles sections', async ({ homePage }) => {
-    expect(homePage.topDestinationsSection()).toBeVisible
-    expect(homePage.currentOffersSection()).toBeVisible
-    expect(homePage.articlesSection()).toBeVisible
+    Assertions.verifyHomePageSections(homePage)
   })
 })
