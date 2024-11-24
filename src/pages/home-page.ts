@@ -1,5 +1,4 @@
 import type { Locator, Page } from '@playwright/test'
-
 export class HomePage {
   constructor(readonly page: Page) {}
 
@@ -20,14 +19,25 @@ export class HomePage {
   datesField(): Locator {
     return this.page.locator('[data-testid="shared-searchForm-travel-period"]')
   }
+
   destinationFields(): Locator {
     return this.page.locator('[data-testid="destination-field"]')
   }
+
   travellersField(): Locator {
     return this.page.locator('[data-testid="travellers-field-multiroom"]')
   }
+
   searchButton(): Locator {
     return this.page.locator('[data-testid="submit"]')
+  }
+
+  async clickSearchButton() {
+    await Promise.all([
+      this.page.waitForResponse('**/search-api/keywords/**'),
+      this.page.waitForURL('**/find/hotels**'), 
+      this.searchButton().click()
+    ])
   }
 
   autoconmpleteItem(number: number): Locator {
@@ -35,8 +45,8 @@ export class HomePage {
   }
 
   // Calendar
-
   /**
+   * Function set end and strt dates in calendar and  click Next and Accept buttons
    * @param startDate start date in the format '2025-07-12'
    * @param endDatestart end date in the format '2025-07-22'
    */
@@ -59,5 +69,4 @@ export class HomePage {
   articlesSection(): Locator {
     return this.page.locator('[data-cy="search-seomulti-main-magazineArticles"]')
   }
-
 }

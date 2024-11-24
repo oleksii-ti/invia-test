@@ -21,7 +21,7 @@ test.describe('Login with incorrect credentials', () => {
     expect(loginPopup.incorrectEmailOrPassword()).not.toBeVisible()
   })
 
-  test('should show incorrect email or password error', async ({ homePage, loginPopup, page }) => {
+  test('should show incorrect email or password error', async ({ homePage, loginPopup }) => {
     await homePage.myAccountIcon().hover()
     await homePage.loginButton().click()
     await loginPopup.emailField().fill('invalid_email@gmail.com')
@@ -36,7 +36,6 @@ test.describe('Login with incorrect credentials', () => {
   test('should show incorrect email or password error for existing user with wrong password', async ({
     homePage,
     loginPopup,
-    page,
   }) => {
     await homePage.myAccountIcon().hover()
     await homePage.loginButton().click()
