@@ -11,9 +11,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    
-    container:
-      image: mcr.microsoft.com/playwright:v1.48.1-focal
+    container: mcr.microsoft.com/playwright:v1.48.1-focal
 
     steps:
     - name: Checkout code
@@ -21,6 +19,7 @@ jobs:
       
     - name: Install dependencies
       run: |
+        node -v
         npm install
         npx playwright install 
   
