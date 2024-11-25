@@ -7,7 +7,10 @@ export default defineConfig({
   timeout: 1 * 60000,
   fullyParallel: true,
   workers: 1,
-  reporter: [['list'], ['html', { open: 'never' }], ['junit', { outputFile: 'results.xml' }]],
+  reporter: [
+    ['list'], 
+    ['html', { open: 'never', outputFolder: `playwright-report-${process.env.LOCALE}` }]
+  ],
   use: {
     baseURL: process.env.BASE_URL,
     screenshot: 'only-on-failure',
