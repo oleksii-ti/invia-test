@@ -1,0 +1,58 @@
+name: Invia Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  e2e-test:
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright:v1.48.1-noble
+    env:
+      HOME: /root
+    if: always()
+
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Install dependencies
+      run: |
+        npm install --production
+        npx playwright install 
+  
+    - name: Run DE prod tests
+      env:
+        BASE_URL: https://www.ab-in-den-urlaub.de
+      run: npm run e2e:prod:de     
+
+    - name: Run AT prod tests
+      if: always()
+      env:
+        BASE_URL: https://www.ab-in-den-urlaub.at
+      run: npm run e2e:prod:at
+
+    - name: Run CH prod tests
+      if: always()
+      env:
+        BASE_URL: https://www.ab-in-den-urlaub.ch
+      run: npm run e2e:prod:ch
+
+    - name: Create report directories
+      if: always()
+      run: mkdir -p playwright-report-de playwright-report-at playwright-report-ch
+
+    - name: Upload all Playwright reports
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: playwright-reports
+        path: |
+          playwright-report-de/
+          playwright-report-at/
+          playwright-report-ch/
