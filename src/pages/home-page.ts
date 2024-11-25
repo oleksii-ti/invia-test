@@ -35,8 +35,8 @@ export class HomePage {
   async clickSearchButton() {
     await Promise.all([
       this.page.waitForResponse('**/search-api/keywords/**'),
-      this.page.waitForURL('**/find/hotels**'), 
-      this.searchButton().click()
+      this.page.waitForURL('**/find/hotels**'),
+      this.searchButton().click(),
     ])
   }
 
