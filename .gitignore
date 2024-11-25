@@ -23,6 +23,6 @@ Thumbs.db
 # Test results
 coverage
 test-results
-playwright-report/
+playwright-report*/
 results.xml
 .history
