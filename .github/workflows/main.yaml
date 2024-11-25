@@ -25,12 +25,18 @@ jobs:
         npx playwright install 
   
     - name: Run DE prod tests
+      env:
+        BASE_URL: https://www.ab-in-den-urlaub.de
       run: npm run e2e:prod:de     
 
     - name: Run AT prod tests
+      env:
+        BASE_URL: https://www.ab-in-den-urlaub.at
       run: npm run e2e:prod:at
 
     - name: Run CH prod tests
+      env:
+        BASE_URL: https://www.ab-in-den-urlaub.ch
       run: npm run e2e:prod:ch
 
     - name: Create report directories
