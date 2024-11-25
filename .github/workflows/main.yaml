@@ -12,6 +12,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container: mcr.microsoft.com/playwright:v1.48.1-noble
+    env:
+      HOME: /root
 
     steps:
     - name: Checkout code
@@ -19,8 +21,7 @@ jobs:
       
     - name: Install dependencies
       run: |
-        node -v
-        npm install
+        npm install --production
         npx playwright install 
   
     - name: Run DE prod tests
