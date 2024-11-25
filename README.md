@@ -1,10 +1,9 @@
 # Invia Assignment
 This is test automation framework for testing the following applications:
 
-ab-in-den-urlaub.de 
-ab-in-den-urlaub.at
-ab-in-den-urlaub.ch
-
+ - ab-in-den-urlaub.de 
+ - ab-in-den-urlaub.at
+ - ab-in-den-urlaub.ch
 
 ## Setup
 
