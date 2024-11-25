@@ -33,9 +33,15 @@ jobs:
     - name: Run CH prod tests
       run: npm run e2e:prod:ch
 
-    - name: Upload test artifacts
+    - name: Create report directories
+      run: mkdir -p playwright-report-de playwright-report-at playwright-report-ch
+
+    - name: Upload all Playwright reports
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: playwright-report
-        path: playwright-report/
+        name: playwright-reports
+        path: |
+          playwright-report-de/
+          playwright-report-at/
+          playwright-report-ch/
